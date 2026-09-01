@@ -66,8 +66,20 @@ Ver `.env.example`. En producción (Azure App Service) se configuran en
 
 ## Despliegue
 
-Guía paso a paso (MongoDB Atlas + Azure App Service, incluyendo por qué se
-eligió Azure por sobre AWS): [`docs/despliegue-azure.md`](docs/despliegue-azure.md).
+**Ya desplegado y en producción:**
+[`https://foodplease-api-fybudqaeb0egd8dt.centralus-01.azurewebsites.net/graphql`](https://foodplease-api-fybudqaeb0egd8dt.centralus-01.azurewebsites.net/graphql)
+
+Importante no confundir dónde vive cada cosa:
+- **El código del backend** (este repo) corre en **Azure App Service** (plan F1, gratuito), con despliegue automático vía GitHub Actions en cada push a `main`.
+- **La base de datos** vive en **MongoDB Atlas** (cluster M0, gratuito) — es un servicio aparte, no está alojada en Azure. Azure solo ejecuta el código de la API; la API se conecta a Atlas mediante `MONGO_URI`.
+
+Guía paso a paso completa (cómo se hizo, incluyendo por qué se eligió Azure
+por sobre AWS): [`docs/despliegue-azure.md`](docs/despliegue-azure.md).
+
+## Proyectos relacionados
+
+- App móvil (frontend): [github.com/Isa-V/APTC106_S11_Grupo1_frontend](https://github.com/Isa-V/APTC106_S11_Grupo1_frontend)
+- Versión web publicada: [isa-v.github.io/APTC106_S11_Grupo1_frontend](https://isa-v.github.io/APTC106_S11_Grupo1_frontend/)
 
 ## Nota para probar el flujo completo en la app
 
