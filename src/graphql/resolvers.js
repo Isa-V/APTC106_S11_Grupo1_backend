@@ -45,7 +45,10 @@ const resolvers = {
 
   Query: {
     pedidosDisponibles: async () => {
-      return Pedido.find({ estado: "DISPONIBLE" }).sort({ createdAt: -1 });
+      const pedidos = await Pedido.find({ estado: "DISPONIBLE" });
+      // Más cercano primero. Los pedidos sin distanciaKm (todavía no
+      // calculada) van al final, no al principio.
+      return pedidos.sort((a, b) => (a.distanciaKm ?? Infinity) - (b.distanciaKm ?? Infinity));
     },
 
     pedidosEnCurso: async (_parent, _args, { repartidor }) => {
